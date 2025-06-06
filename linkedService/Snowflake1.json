@@ -1,0 +1,22 @@
+{
+	"name": "Snowflake1",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SnowflakeV2",
+		"typeProperties": {
+			"authenticationType": "KeyPair",
+			"accountIdentifier": "PVA65410",
+			"user": "NICK.BERGERON@SLALOM.COM",
+			"database": "BOC",
+			"warehouse": "TRANSFORMING",
+			"role": "TRANSFORMER",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VAQkU2N0I2MTAtNUMxQi00QzcyLTlBNjEtRDhDMUU1QTY5RUZEX2RlYzczMmQzLTUyMjgtNDdhMi1hMjk5LWFiMjc2NjMxZGM1NCINCn0="
+		},
+		"version": "1.1",
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
