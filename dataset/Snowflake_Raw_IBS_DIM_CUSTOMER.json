@@ -7,12 +7,10 @@
 		},
 		"parameters": {
 			"SchemaName": {
-				"type": "string",
-				"defaultValue": "Raw"
+				"type": "string"
 			},
 			"TableName": {
-				"type": "string",
-				"defaultValue": "IBS_DIM_CUSTOMER"
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -58,8 +56,14 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "RAW",
-			"table": "IBS_DIM_CUSTOMER"
+			"schema": {
+				"value": "@dataset().SchemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
 		}
 	}
 }
