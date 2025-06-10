@@ -1,5 +1,5 @@
 {
-	"name": "Snowflake_Customer_Parquet",
+	"name": "BOC_Azure_Blob_Storage",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Snowflake_to_Blob_LS",
