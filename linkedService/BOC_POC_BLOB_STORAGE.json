@@ -5,8 +5,7 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": "DefaultEndpointsProtocol=https;AccountName=ocbocpocalds;EndpointSuffix=core.windows.net;",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VAQkU2N0I2MTAtNUMxQi00QzcyLTlBNjEtRDhDMUU1QTY5RUZEXzUyNDdlNTM2LTA3ZDQtNGRjMC04ZDEzLWVjYmI3MzEwYjM4MyINCn0="
+			"sasUri": "https://ocbocpocalds.blob.core.windows.net/?sv=2024-11-04&ss=bfqt&srt=sco&sp=rwdlacupyx&se=2025-06-11T02:36:15Z&st=2025-06-10T18:36:15Z&spr=https&sig=WU7tzTap2iUJ%2Ffv%2FEVjsehO%2FgrgPe39m7MdlJl%2FzHeM%3D?sv=2024-11-04&ss=bfqt&srt=sco&sp=rwdlacupyx&se=2025-06-11T02:36:15Z&st=2025-06-10T18:36:15Z&spr=https&sig=WU7tzTap2iUJ%2Ffv%2FEVjsehO%2FgrgPe39m7MdlJl%2FzHeM%3D"
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
