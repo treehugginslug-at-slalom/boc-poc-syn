@@ -15,46 +15,7 @@
 		},
 		"annotations": [],
 		"type": "SnowflakeV2Table",
-		"schema": [
-			{
-				"name": "C_CUSTKEY",
-				"type": "NUMBER",
-				"precision": 38,
-				"scale": 0
-			},
-			{
-				"name": "C_NAME",
-				"type": "VARCHAR"
-			},
-			{
-				"name": "C_ADDRESS",
-				"type": "VARCHAR"
-			},
-			{
-				"name": "C_NATIONKEY",
-				"type": "NUMBER",
-				"precision": 38,
-				"scale": 0
-			},
-			{
-				"name": "C_PHONE",
-				"type": "VARCHAR"
-			},
-			{
-				"name": "C_ACCTBAL",
-				"type": "NUMBER",
-				"precision": 12,
-				"scale": 2
-			},
-			{
-				"name": "C_MKTSEGMENT",
-				"type": "VARCHAR"
-			},
-			{
-				"name": "C_COMMENT",
-				"type": "VARCHAR"
-			}
-		],
+		"schema": [],
 		"typeProperties": {
 			"schema": {
 				"value": "@dataset().SchemaName",
