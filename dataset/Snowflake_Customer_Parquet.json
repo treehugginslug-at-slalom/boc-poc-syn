@@ -2,7 +2,7 @@
 	"name": "Snowflake_Customer_Parquet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Snowflake_to_ADLS_Customer_Tbl",
+			"referenceName": "Snowflake_to_Blob_LS",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -17,7 +17,7 @@
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
+				"type": "AzureBlobStorageLocation",
 				"fileName": {
 					"value": "@dataset().FileName",
 					"type": "Expression"
@@ -26,7 +26,7 @@
 					"value": "@dataset.Directory",
 					"type": "Expression"
 				},
-				"fileSystem": "ocbocblog"
+				"container": "ocbocblog"
 			},
 			"compressionCodec": "snappy"
 		},
