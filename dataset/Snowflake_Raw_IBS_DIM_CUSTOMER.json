@@ -5,6 +5,16 @@
 			"referenceName": "Snowflake_BOC_POC",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"SchemaName": {
+				"type": "string",
+				"defaultValue": "Raw"
+			},
+			"TableName": {
+				"type": "string",
+				"defaultValue": "IBS_DIM_CUSTOMER"
+			}
+		},
 		"annotations": [],
 		"type": "SnowflakeV2Table",
 		"schema": [
