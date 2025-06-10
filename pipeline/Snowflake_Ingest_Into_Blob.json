@@ -90,16 +90,20 @@
 		],
 		"parameters": {
 			"SchemaName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "RAW"
 			},
 			"TableName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "IBS_DIM_CUSTOMER"
 			},
 			"SystemName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "IBS"
 			},
 			"VersionNumber": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Version1"
 			}
 		},
 		"variables": {
