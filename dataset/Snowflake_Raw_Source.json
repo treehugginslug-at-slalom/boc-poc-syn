@@ -1,5 +1,5 @@
 {
-	"name": "Snowflake_Raw_IBS_DIM_CUSTOMER",
+	"name": "Snowflake_Raw_Source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Snowflake_BOC_POC",
