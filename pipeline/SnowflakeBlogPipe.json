@@ -24,13 +24,13 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
+							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false
@@ -43,7 +43,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Blog_Raw_IBS_DIM_CUSTOMER",
+						"referenceName": "ADLS_BOC_BOC_LS",
 						"type": "DatasetReference"
 					}
 				]

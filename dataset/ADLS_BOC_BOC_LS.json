@@ -1,0 +1,21 @@
+{
+	"name": "ADLS_BOC_BOC_LS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BOC_POC_ADLS_TEST",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
