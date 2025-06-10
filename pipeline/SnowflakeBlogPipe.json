@@ -3,9 +3,16 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopySnowflakeData",
+				"name": "Copy Data From Snowflake To ADLS",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set As Of Date",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -22,15 +29,13 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".csv"
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -38,17 +43,57 @@
 				"inputs": [
 					{
 						"referenceName": "Snowflake_Raw_IBS_DIM_CUSTOMER",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": {
+								"value": "@pipeline().parameters.SchemaName",
+								"type": "Expression"
+							},
+							"TableName": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ADLS_BOC_BOC_LS",
+						"referenceName": "Snowflake_Customer_Parquet",
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Set As Of Date",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "As_Of_Date",
+					"value": {
+						"value": "@convertTimeZone(utcnow(),'UTC','Pacific Standard Time')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"parameters": {
+			"SchemaName": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"As_Of_Date": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
