@@ -42,7 +42,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Snowflake_Raw_IBS_DIM_CUSTOMER",
+						"referenceName": "Snowflake_Raw_Source",
 						"type": "DatasetReference",
 						"parameters": {
 							"SchemaName": {
@@ -58,7 +58,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Snowflake_Customer_Parquet",
+						"referenceName": "BOC_Azure_Blob_Storage",
 						"type": "DatasetReference",
 						"parameters": {
 							"FileName": "@concat(pipeline().parameters.TableName,'.parquet')"
