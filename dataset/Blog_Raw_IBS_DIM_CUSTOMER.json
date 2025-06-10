@@ -1,0 +1,51 @@
+{
+	"name": "Blog_Raw_IBS_DIM_CUSTOMER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BOC_POC_BLOB_STORAGE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "ocbocblog"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "C_CUSTKEY",
+				"type": "String"
+			},
+			{
+				"name": "C_NAME",
+				"type": "String"
+			},
+			{
+				"name": "C_NATIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "C_PHONE",
+				"type": "String"
+			},
+			{
+				"name": "C_ACCTBAL",
+				"type": "String"
+			},
+			{
+				"name": "C_MKTSEGMENT",
+				"type": "String"
+			},
+			{
+				"name": "C_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -25,12 +25,12 @@
 						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "MergeFiles"
+							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".csv"
+							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false
@@ -43,7 +43,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "BOC_POC_SNOWFLAKE",
+						"referenceName": "Blog_Raw_IBS_DIM_CUSTOMER",
 						"type": "DatasetReference"
 					}
 				]
