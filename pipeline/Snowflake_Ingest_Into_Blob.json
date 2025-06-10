@@ -1,5 +1,5 @@
 {
-	"name": "SnowflakeBlogPipe",
+	"name": "Snowflake_Ingest_Into_Blob",
 	"properties": {
 		"activities": [
 			{
@@ -31,7 +31,7 @@
 					"sink": {
 						"type": "ParquetSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
+							"type": "AzureBlobStorageWriteSettings",
 							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
