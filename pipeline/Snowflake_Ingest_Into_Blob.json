@@ -61,10 +61,6 @@
 						"referenceName": "Snowflake_Customer_Parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"Directory": {
-								"value": "@concat('raw/',pipeline().parameters.SystemName, '/',\n          pipeline().parameters.SchemaName,'/',\n           pipeline().parameters.TableName,'/',\n           pipeline().parameters.VersionNumber,\n           '/Year=', formatDateTime(variables('As_Of_Date'),'yyyy'),'/Month=', formatDateTime(variables('As_Of_Date'),'MM'), '/Day=', formatDateTime(variables('As_Of_Date'),'dd'))",
-								"type": "Expression"
-							},
 							"FileName": "@concat(pipeline().parameters.TableName,'.parquet')"
 						}
 					}
