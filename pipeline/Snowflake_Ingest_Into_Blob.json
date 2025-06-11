@@ -86,8 +86,6 @@
 			{
 				"name": "Load ADLS to Snowflake Raw",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy Data From Snowflake To ADLS",
