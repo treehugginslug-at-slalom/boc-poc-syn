@@ -5,6 +5,8 @@
 			{
 				"name": "Copy Data From Snowflake To ADLS",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Set As Of Date",
@@ -69,7 +71,22 @@
 			{
 				"name": "Set As Of Date",
 				"type": "SetVariable",
-				"dependsOn": [],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Get List of Source Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Get Metadata Config Table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -86,6 +103,8 @@
 			{
 				"name": "Load ADLS to Snowflake Raw",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy Data From Snowflake To ADLS",
@@ -117,6 +136,66 @@
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Get List of Source Tables",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SnowflakeV2Source",
+						"query": "select table_schema, table_name, column_name, ordinal_position\nfrom boc.information_schema.columns\norder by table_schema, table_name, ordinal_position",
+						"exportSettings": {
+							"type": "SnowflakeExportCopyCommand"
+						}
+					},
+					"dataset": {
+						"referenceName": "Snowflake_Raw_Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": "INFORMATION_SCHEMA",
+							"TableName": "COLUMNS"
+						}
+					}
+				}
+			},
+			{
+				"name": "Get Metadata Config Table",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SnowflakeV2Source",
+						"query": "select source_database, source_schema, source_field\nfrom BOC.RAW.PIPELINE_CONTROL\nwhere record_is_active = TRUE and source_system = 'SNOWFLAKE'",
+						"exportSettings": {
+							"type": "SnowflakeExportCopyCommand"
+						}
+					},
+					"dataset": {
+						"referenceName": "Snowflake_Raw_Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": "RAW",
+							"TableName": "PIPELINE_CONTROL"
+						}
+					}
 				}
 			}
 		],
