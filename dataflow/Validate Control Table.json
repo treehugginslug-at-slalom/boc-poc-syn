@@ -1,0 +1,56 @@
+{
+	"name": "Validate Control Table",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Snowflake_Raw_Source",
+						"type": "DatasetReference"
+					},
+					"name": "ControlTableFields"
+				},
+				{
+					"dataset": {
+						"referenceName": "Snowflake_Raw_Source",
+						"type": "DatasetReference"
+					},
+					"name": "AllFieldsinSource"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     query: 'select source_database, source_schema, source_field\\nfrom BOC.RAW.PIPELINE_CONTROL\\nwhere record_is_active = TRUE and source_system = \\'SNOWFLAKE\\'',",
+				"     format: 'query') ~> ControlTableFields",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     query: 'select table_schema, table_name, column_name, ordinal_position\\nfrom boc.information_schema.columns\\norder by table_schema, table_name, ordinal_position',",
+				"     format: 'query') ~> AllFieldsinSource",
+				"ControlTableFields, AllFieldsinSource join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: '',",
+				"     tableName: '') ~> sink1"
+			]
+		}
+	}
+}
